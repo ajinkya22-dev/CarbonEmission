@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { useNavigate } from "react-router-dom";
 import { 
   BarChart3, 
   Factory, 
@@ -76,7 +77,7 @@ const stats = [
 
 export function LandingPage({ onGetStarted, onLogin }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -212,7 +213,7 @@ export function LandingPage({ onGetStarted, onLogin }) {
               <Button 
                 size="lg" 
                 variant="outline" 
-                onClick={onLogin}
+                onClick={()=> navigate("/livedemo")}
                 className="text-lg px-8 py-3 border-green-200 hover:bg-green-50"
               >
                 Watch Demo

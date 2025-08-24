@@ -4,11 +4,12 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Lock, Mail, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function LoginForm({ onLogin, onBackToLanding, onGoToSignup }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(email, password);
@@ -20,7 +21,7 @@ export function LoginForm({ onLogin, onBackToLanding, onGoToSignup }) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={onBackToLanding}
+          onClick={() => navigate("/")}
           className="flex items-center gap-1 text-green-700 hover:text-green-800"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -82,7 +83,7 @@ export function LoginForm({ onLogin, onBackToLanding, onGoToSignup }) {
           <div className="mt-6 text-center">
             <button
               type="button"
-              onClick={onGoToSignup}
+              onClick={() => navigate("/signup")}
               className="text-sm text-green-600 hover:text-green-800 underline underline-offset-2 transition-colors"
             >
               Don't have an account? Sign up

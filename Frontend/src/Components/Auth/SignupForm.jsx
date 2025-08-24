@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Lock, Mail, User, Building, ArrowLeft, ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function SignupForm({ onSignup, onBackToLanding, onGoToLogin }) {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ export function SignupForm({ onSignup, onBackToLanding, onGoToLogin }) {
   const [name, setName] = useState("");
   const [industry, setIndustry] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     onSignup(email, password, name, industry);
@@ -36,7 +37,7 @@ export function SignupForm({ onSignup, onBackToLanding, onGoToLogin }) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={onBackToLanding}
+          onClick={() => navigate("/")}
           className="flex items-center gap-1 text-green-700 hover:text-green-800"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -155,7 +156,7 @@ export function SignupForm({ onSignup, onBackToLanding, onGoToLogin }) {
           <div className="mt-6 text-center">
             <button
               type="button"
-              onClick={onGoToLogin}
+              onClick={() => navigate("/login")}
               className="text-sm text-green-600 hover:text-green-800 underline underline-offset-2 transition-colors"
             >
               Already have an account? Sign in
